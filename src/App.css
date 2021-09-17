@@ -1,9 +1,4 @@
-path {
-  fill: transparent;
+.App {
+  display: flex;
 }
-
-text {
-  fill: #FF9800;
-}
-
 
