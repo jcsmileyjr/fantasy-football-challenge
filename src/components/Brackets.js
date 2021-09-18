@@ -21,8 +21,8 @@ const Bracket = ({ home, visiting }) => {
 const Brackets = ({ next, currentBrackets }) => {
   return (
     <article>
-      {currentBrackets.map(bracket => {
-        return <Bracket home={bracket.home} visiting={bracket.visiting} />
+      {currentBrackets.map((bracket, index) => {
+        return <Bracket home={bracket.home} visiting={bracket.visiting} key={index} />
       })}
       <NextButton title="Time to Play some Football" next={next} />
     </article>
