@@ -24,7 +24,7 @@ const PickPlayers = ({ next }) => {
   return (
     <article className="flex-col h-screen">
       <section
-        className={`flex-1 small-phone:mt-2 -mt-12 ${
+        className={`flex-1 small-phone:-mt-4 -mt-12 ${
           enableNextButton ? "filter grayscale" : ""
         }`}
       >
