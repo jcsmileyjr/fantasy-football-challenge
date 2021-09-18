@@ -77,30 +77,12 @@ const PickPlayers = ({ next }) => {
           pick={picked}
         />
         <Players
-          name="The Irnee"
+          name="The Irene"
           role="Offensive Tackle"
           primaryStat="Quarterback sacks"
           primaryNumber="28"
           secondaryStat="Running Back sacks"
           seconaryNumber="3"
-          pick={picked}
-        />
-        <Players
-          name="John Big Dog"
-          role="Quarterback"
-          primaryStat="Passing Yards"
-          primaryNumber="305"
-          secondaryStat="Touchdowns"
-          seconaryNumber="15"
-          pick={picked}
-        />
-        <Players
-          name="Carly the Bold"
-          role="Quarterback"
-          primaryStat="Passing Yards"
-          primaryNumber="505"
-          secondaryStat="Touchdowns"
-          seconaryNumber="31"
           pick={picked}
         />
       </section>

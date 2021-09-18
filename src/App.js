@@ -19,7 +19,7 @@ function App() {
         {challengeStage === 0 && <Title next={nextScreen} />}
         {challengeStage === 1 && <TeamName next={nextScreen} />}
         {challengeStage === 2 && <PickPlayers next={nextScreen} />}
-        {challengeStage === 3 && <Brackets />}
+        {challengeStage === 3 && <Brackets next={nextScreen} />}
 
       </main>
     </div>
