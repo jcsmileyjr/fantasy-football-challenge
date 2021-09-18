@@ -18,14 +18,12 @@ const Bracket = ({ home, visiting }) => {
   );
 };
 
-const Brackets = ({ next }) => {
+const Brackets = ({ next, currentBrackets }) => {
   return (
     <article>
-      <Bracket home="Mighty Ducks" visiting="Pink Flaming Candles" />
-      <Bracket home="Roaring Bears" visiting="Striking Tigers" />
-      <Bracket home="Sneaky Snakes" visiting="Leaping Frogs" />
-      <Bracket home="Black Panthers" visiting="Painful Worms" />
-      <Bracket home="Idiot Cats" visiting="Fuzzy Puppies" />
+      {currentBrackets.map(bracket => {
+        return <Bracket home={bracket.home} visiting={bracket.visiting} />
+      })}
       <NextButton title="Time to Play some Football" next={next} />
     </article>
   );

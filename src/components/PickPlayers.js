@@ -22,9 +22,9 @@ const PickPlayers = ({ next }) => {
   };
 
   return (
-    <article className="flex-col h-screen z-0">
+    <article className="flex-col h-screen">
       <section
-        className={`flex-1 sticky small-phone:top-10 top-4 -mt-12 z-20 ${
+        className={`flex-1 small-phone:mt-2 -mt-12 ${
           enableNextButton ? "filter grayscale" : ""
         }`}
       >
@@ -68,7 +68,7 @@ const PickPlayers = ({ next }) => {
           pick={picked}
         />
         <Players
-          name="Deshaun the Bat"
+          name="Little Deshaun"
           role="Offensive Tackle"
           primaryStat="Quarterback sacks"
           primaryNumber="15"
