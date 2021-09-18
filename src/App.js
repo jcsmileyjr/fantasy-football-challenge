@@ -3,6 +3,7 @@ import "./App.css";
 import Title from "./components/Title";
 import TeamName from "./components/TeamName";
 import PickPlayers from "./components/PickPlayers";
+import Brackets from "./components/Brackets";
 
 function App() {
   const [challengeStage, setChallengeStage] = useState(0);
@@ -18,6 +19,7 @@ function App() {
         {challengeStage === 0 && <Title next={nextScreen} />}
         {challengeStage === 1 && <TeamName next={nextScreen} />}
         {challengeStage === 2 && <PickPlayers next={nextScreen} />}
+        {challengeStage === 3 && <Brackets />}
 
       </main>
     </div>
