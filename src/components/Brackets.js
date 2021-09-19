@@ -97,6 +97,12 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
         userTeam={userTeam}
         currentBrackets={currentBrackets}
       />
+      <section>
+        {currentBrackets.length === 8 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 1</p>}
+        {currentBrackets.length === 4 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 2</p>}
+        {currentBrackets.length === 2 && <p className="text-center font-bold underline text-lg md:text-4xl ">Play Offs</p>}
+        {currentBrackets.length === 1 && <p className="text-center font-bold underline text-lg md:text-4xl ">Championship</p>}
+      </section>
       <section className="-mt-12 small-phone:-mt-4">
         <NextButton title="Time to Play some Football" next={play} />
       </section>
