@@ -163,7 +163,7 @@ function App() {
           />
         )}
         {challengeStage === "lose" && (
-          <Lose restart={newGame} team={teamname} />
+          <Lose restart={newGame} team={teamname} games={currentBrackets} />
         )}
         {challengeStage === "won" && <Won restart={newGame} />}
       </main>
