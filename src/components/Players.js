@@ -30,10 +30,10 @@ const Players = ({
           <p>{primaryStat}</p>
           <p>{primaryNumber}</p>
         </div>
-        <div className="flex flex-row justify-between">
+        {/* <div className="flex flex-row justify-between">
           <p>{secondaryStat}</p>
           <p>{seconaryNumber}</p>
-        </div>
+        </div> */}
         <div className="text-center mt-4">
           <button
             disabled={enable}

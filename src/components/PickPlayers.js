@@ -5,7 +5,6 @@ import players from '../data/player';
 
 const PickPlayers = ({ next, buildRoster, teamPlayers }) => {
   const [buttonText, setButtonText] = useState("3 remaining picks");
-  const [numberOfPicks, setNumberOfPicks] = useState(3);
   const [enableNextButton, setNextButton] = useState(true);
 
   // Tracks the number of players choosen by the user by the user clicking the "Pick" button
@@ -41,6 +40,7 @@ const PickPlayers = ({ next, buildRoster, teamPlayers }) => {
         }`}
       >
         <NextButton title={buttonText} next={next} enable={enableNextButton} />
+        <p className="text-xs text-center">* Player selection is disable when roster is full</p>
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
         {players.map((player, index) => {
