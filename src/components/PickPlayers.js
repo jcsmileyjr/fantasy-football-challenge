@@ -1,9 +1,8 @@
 import { useState } from "react";
 import NextButton from "./NextButton";
 import Players from "./Players";
-import players from '../data/player';
 
-const PickPlayers = ({ next, buildRoster, teamPlayers }) => {
+const PickPlayers = ({ next, buildRoster, teamPlayers, draft }) => {
   const [buttonText, setButtonText] = useState("3 remaining picks");
   const [enableNextButton, setNextButton] = useState(true);
 
@@ -42,7 +41,7 @@ const PickPlayers = ({ next, buildRoster, teamPlayers }) => {
         <p className="text-xs sm:text-2xl text-center">* Player selection is disable when roster is full</p>
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
-        {players.map((player, index) => {
+        {draft.map((player, index) => {
           return <Players key={index} enable={!enableNextButton} name={player.name} role={player.role} primaryStat={player.primaryStat} primaryNumber={player.primaryNumber} seconaryNumber={player.seconaryNumber} secondaryStat={player.secondaryStat} pick={() =>picked(player)} /> 
         })}
       </section>

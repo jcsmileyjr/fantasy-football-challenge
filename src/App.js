@@ -6,6 +6,7 @@ import PickPlayers from "./components/PickPlayers";
 import Brackets from "./components/Brackets";
 import Lose from "./components/Lose";
 import Won from "./components/Won";
+import {userDraft, createPlayers} from './data/player';
 
 function App() {
   const [challengeStage, setChallengeStage] = useState(0);
@@ -13,10 +14,21 @@ function App() {
   const [roster, setRoster] = useState([]);
   const [currentBrackets, setBrackets] = useState([]);
   const [currentPlayOffStats, setStats] = useState([]);
+  const [playerdraft, setPlayerDraft] = useState([]);
+  const [allDraft, setAllDraft] = useState([]);
 
   // main method in NextButton that moves user through the intial team creation screen
   const nextScreen = () => {
-    setChallengeStage(challengeStage + 1);
+    setChallengeStage(challengeStage + 1); // navigate user to the next screen
+
+    // Drafts 48 players for the 6 teams. Preload user draft with 6 random players of the 48.
+    if(challengeStage + 1 === 1){
+      let listOfPlayers = createPlayers();
+      let officialDraft = userDraft(listOfPlayers);
+      setPlayerDraft(officialDraft[0]);
+      setAllDraft(officialDraft[1]);
+    }
+
     if (challengeStage + 1 === 2) {
       generateStartingBracket(); // Create the initial bracket of teams including the user team's name
     }
@@ -151,6 +163,7 @@ function App() {
             next={nextScreen}
             buildRoster={setRoster}
             teamPlayers={roster}
+            draft = {playerdraft}
           />
         )}
         {challengeStage === 3 && (
