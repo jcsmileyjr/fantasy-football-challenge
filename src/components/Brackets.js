@@ -15,14 +15,14 @@ const Stats = ({ stats, userTeam, currentBrackets }) => {
 
   return (
     <section
-      className={`bg-gray-100 absolute mt-20 z-10 w-10/12 mx-8 md:mx-16 lg:mx-20 rounded ${
+      className={`bg-gray-100 absolute mt-20 z-10 w-10/12 mx-8 md:mx-16 lg:mx-20 xl:mx-60 2xl:mx-96 xl:w-8/12 2xl:w-6/12 rounded ${
         showModal ? "block" : "hidden"
       } ${currentBrackets.length >= 7 ? "hidden" : ""}`}
     >
       <p className="text-center text-2xl md:text-5xl lg:text-6xl font-bold text-green-500 underline mb-2">
         Game Stats
       </p>
-      <ol className="mx-2 lg:mx-4 text-sm md:text-2xl lg:text-3xl">
+      <ol className="mx-2 lg:mx-4 text-sm md:text-2xl lg:text-3xl xl:mx-10">
         {stats.map((stat, index) => {
           return (
             <li
@@ -39,7 +39,7 @@ const Stats = ({ stats, userTeam, currentBrackets }) => {
       <div className="flex justify-center mt-4">
         <buttton
           type="button"
-          className="text-sm mb-2 py-1 px-4 md:py-2 md:px-8 lg:py-4 lg:px-12 rounded-lg md:text-2xl lg:text-3xl bg-red-700 font-bold"
+          className="text-sm mb-2 py-1 px-4 md:py-2 md:px-8 lg:py-4 lg:px-12 xl:px-6 xl:py-2 2xl:px-6 2xl:py-2 rounded-lg md:text-2xl lg:text-3xl bg-red-700 font-bold"
           onClick={closeModal}
         >
           Close
@@ -100,16 +100,18 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
       <section className="-mt-12 small-phone:-mt-4">
         <NextButton title="Time to Play some Football" next={play} />
       </section>
-      {currentBrackets.map((bracket, index) => {
-        return (
-          <Bracket
-            home={bracket.home}
-            visiting={bracket.visiting}
-            key={index}
-            userTeam={userTeam}
-          />
-        );
-      })}
+      <section className="xl:w-5/12 xl:mx-auto xl:mt-4">
+        {currentBrackets.map((bracket, index) => {
+          return (
+            <Bracket
+              home={bracket.home}
+              visiting={bracket.visiting}
+              key={index}
+              userTeam={userTeam}
+            />
+          );
+        })}
+      </section>
     </article>
   );
 };
