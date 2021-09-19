@@ -12,6 +12,7 @@ function App() {
   const [teamname, setTeamName] = useState("");
   const [roster, setRoster] = useState([]);
   const [currentBrackets, setBrackets] = useState([]);
+  const [currentPlayOffStats, setStats] = useState([]);
 
   // main method in NextButton that moves user through the intial team creation screen
   const nextScreen = () => {
@@ -67,8 +68,8 @@ function App() {
     setBrackets(generateBracket(teams)); // Save new brackets to state
   };
 
+  // Determine which teams proceed to the next round.
   const playGame = () => {
-    console.log(roster)
     let canPlay = false;
     currentBrackets.forEach((team) => {
       for (let key in team) {
@@ -94,8 +95,11 @@ function App() {
       }
     }
 
+    clearGameStats();
+
     const outcomes = currentBrackets.map((team, index) => {
       let flipOutcome = Math.random();
+      gatherStats(flipOutcome, team.home, team.visiting);
       if (flipOutcome < 0.5) {
         return team.home;
       } else {
@@ -106,9 +110,30 @@ function App() {
     setBrackets(generateBracket(outcomes));
   };
 
+  const clearGameStats = () => {
+    setStats([""]);
+  };
+
+  // Gather the last round stats to be display on pop-up modal on the Brackets Screen
+  const gatherStats = (outcome, home, visiting) => {
+    let stat = "";
+    if (outcome < 0.5) {
+      stat = `${home} won against ${visiting}`;
+    } else {
+      stat = `${home} lose against ${visiting}`;
+    }
+
+    let gameStats = currentPlayOffStats;
+    gameStats.push(stat);
+    setStats(gameStats);
+  };
+
   // Restart game
   const newGame = () => {
     setChallengeStage(0);
+    setRoster([]);
+    setBrackets([]);
+    clearGameStats();
   };
 
   return (
@@ -134,6 +159,7 @@ function App() {
             currentBrackets={currentBrackets}
             play={playGame}
             userTeam={teamname}
+            roundStats={currentPlayOffStats}
           />
         )}
         {challengeStage === "lose" && (
