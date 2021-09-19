@@ -133,6 +133,7 @@ function App() {
             next={nextScreen}
             currentBrackets={currentBrackets}
             play={playGame}
+            userTeam={teamname}
           />
         )}
         {challengeStage === "lose" && (
