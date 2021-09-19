@@ -1,7 +1,6 @@
 import { useState } from "react";
 import NextButton from "./NextButton";
 import Players from "./Players";
-import faker from "faker";
 import players from '../data/player';
 
 const PickPlayers = ({ next }) => {
@@ -33,8 +32,8 @@ const PickPlayers = ({ next }) => {
         <NextButton title={buttonText} next={next} enable={enableNextButton} />
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
-        {players.map(player => {
-          return <Players name={player.name} role={player.role} primaryStat={player.primaryStat} primaryNumber={player.primaryNumber} seconaryNumber={player.seconaryNumber} secondaryStat={player.secondaryStat} pick={picked} /> 
+        {players.map((player, index) => {
+          return <Players key={index} name={player.name} role={player.role} primaryStat={player.primaryStat} primaryNumber={player.primaryNumber} seconaryNumber={player.seconaryNumber} secondaryStat={player.secondaryStat} pick={picked} /> 
         })}
       </section>
     </article>

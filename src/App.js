@@ -69,9 +69,9 @@ function App() {
 
   const playGame = () => {
     let canPlay = false;
-    currentBrackets.forEach(team => {
-      for(let key in team){
-        if(team[key]=== teamname){
+    currentBrackets.forEach((team) => {
+      for (let key in team) {
+        if (team[key] === teamname) {
           canPlay = true;
           return;
         }
@@ -82,12 +82,12 @@ function App() {
       setChallengeStage("lose");
     }
 
-    if(currentBrackets.length === 1){
+    if (currentBrackets.length === 1) {
       let championship = Math.random();
-      if(championship < 0.5){
+      if (championship < 0.5) {
         setChallengeStage("won");
         return;
-      }else{
+      } else {
         setChallengeStage("lose");
         return;
       }
@@ -95,7 +95,6 @@ function App() {
 
     const outcomes = currentBrackets.map((team, index) => {
       let flipOutcome = Math.random();
-      console.log(`${team.home} vs ${team.visiting} with outcome ${flipOutcome}`);
       if (flipOutcome < 0.5) {
         return team.home;
       } else {
@@ -103,9 +102,7 @@ function App() {
       }
     });
 
-
     setBrackets(generateBracket(outcomes));
-    
   };
 
   // Restart game
