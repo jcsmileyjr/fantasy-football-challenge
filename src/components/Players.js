@@ -8,6 +8,7 @@ const Players = ({
   secondaryStat,
   seconaryNumber,
   pick,
+  enable = false,
 }) => {
   const [drafted, setdraft] = useState(false);
   const isDraft = () => {
@@ -35,6 +36,7 @@ const Players = ({
         </div>
         <div className="text-center mt-4">
           <button
+            disabled={enable}
             type="button"
             className={` text-sm mb-2 py-1 px-4 rounded-lg md:text-xl ${
               drafted

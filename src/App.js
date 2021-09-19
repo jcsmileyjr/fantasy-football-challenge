@@ -10,6 +10,7 @@ import Won from "./components/Won";
 function App() {
   const [challengeStage, setChallengeStage] = useState(0);
   const [teamname, setTeamName] = useState("");
+  const [roster, setRoster] = useState([]);
   const [currentBrackets, setBrackets] = useState([]);
 
   // main method in NextButton that moves user through the intial team creation screen
@@ -63,11 +64,11 @@ function App() {
       "Dark Unicorns",
     ];
     teams.push(teamname); // Add user's enter team to array of teams
-
     setBrackets(generateBracket(teams)); // Save new brackets to state
   };
 
   const playGame = () => {
+    console.log(roster)
     let canPlay = false;
     currentBrackets.forEach((team) => {
       for (let key in team) {
@@ -120,7 +121,13 @@ function App() {
         {challengeStage === 1 && (
           <TeamName next={nextScreen} createTeam={setTeamName} />
         )}
-        {challengeStage === 2 && <PickPlayers next={nextScreen} />}
+        {challengeStage === 2 && (
+          <PickPlayers
+            next={nextScreen}
+            buildRoster={setRoster}
+            teamPlayers={roster}
+          />
+        )}
         {challengeStage === 3 && (
           <Brackets
             next={nextScreen}
