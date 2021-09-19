@@ -1,0 +1,14 @@
+import Helmets from '../assets/football-1.jpg';
+
+const Lose = ({team, restart}) => {
+    return(
+        <article className="h-screen flex flex-col ">
+            <img src={Helmets} alt="blue and black clashing football helmets" className="" />
+            <h1 className="mt-4 font-bold text-3xl text-center">Game Over</h1>
+            <p className="mt-2 mx-4 text-center text-xl">Team "{team}" didn't make the play-offs.</p>
+            <button type="button" className="mt-12 font-bold bg-blue-700 text-white rounded-2xl md:text-4xl mx-4" onClick={restart}>Play Again</button>
+        </article>
+    );
+}
+
+export default Lose;

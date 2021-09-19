@@ -4,6 +4,8 @@ import Title from "./components/Title";
 import TeamName from "./components/TeamName";
 import PickPlayers from "./components/PickPlayers";
 import Brackets from "./components/Brackets";
+import Lose from "./components/Lose";
+import Won from "./components/Won";
 
 function App() {
   const [challengeStage, setChallengeStage] = useState(0);
@@ -65,8 +67,34 @@ function App() {
   };
 
   const playGame = () => {
+    let canPlay = false;
+    currentBrackets.forEach(team => {
+      for(let key in team){
+        if(team[key]=== teamname){
+          canPlay = true;
+          return;
+        }
+      }
+    });
+
+    if (canPlay === false) {
+      setChallengeStage("lose");
+    }
+
+    if(currentBrackets.length === 1){
+      let championship = Math.random();
+      if(championship < 0.5){
+        setChallengeStage("won");
+        return;
+      }else{
+        setChallengeStage("lose");
+        return;
+      }
+    }
+
     const outcomes = currentBrackets.map((team, index) => {
       let flipOutcome = Math.random();
+      console.log(`${team.home} vs ${team.visiting} with outcome ${flipOutcome}`);
       if (flipOutcome < 0.5) {
         return team.home;
       } else {
@@ -74,11 +102,15 @@ function App() {
       }
     });
 
+
     setBrackets(generateBracket(outcomes));
+    
   };
 
-  // display updated bracket
-  const nextRound = () => {};
+  // Restart game
+  const newGame = () => {
+    setChallengeStage(0);
+  };
 
   return (
     <div className="App flex-col h-screen">
@@ -98,6 +130,10 @@ function App() {
             play={playGame}
           />
         )}
+        {challengeStage === "lose" && (
+          <Lose restart={newGame} team={teamname} />
+        )}
+        {challengeStage === "won" && <Won restart={newGame} />}
       </main>
     </div>
   );
