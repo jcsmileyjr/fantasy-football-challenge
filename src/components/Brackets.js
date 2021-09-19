@@ -18,13 +18,13 @@ const Bracket = ({ home, visiting }) => {
   );
 };
 
-const Brackets = ({ next, currentBrackets }) => {
+const Brackets = ({ play, currentBrackets }) => {
   return (
     <article>
       {currentBrackets.map((bracket, index) => {
         return <Bracket home={bracket.home} visiting={bracket.visiting} key={index} />
       })}
-      <NextButton title="Time to Play some Football" next={next} />
+      <NextButton title="Time to Play some Football" next={play} />
     </article>
   );
 };
