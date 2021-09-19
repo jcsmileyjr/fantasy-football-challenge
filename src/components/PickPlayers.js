@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NextButton from "./NextButton";
 import Players from "./Players";
+import faker from "faker";
 
 const PickPlayers = ({ next }) => {
   const [buttonText, setButtonText] = useState("3 remaining picks");
@@ -32,7 +33,7 @@ const PickPlayers = ({ next }) => {
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
         <Players
-          name="Paul the Bull"
+          name={faker.name.findName()}
           role="Running Back"
           primaryStat="Rushing Yards"
           primaryNumber="115"
@@ -41,7 +42,7 @@ const PickPlayers = ({ next }) => {
           pick={picked}
         />
         <Players
-          name="Shane the Cane"
+          name={faker.name.findName()}
           role="Running Back"
           primaryStat="Rushing Yards"
           primaryNumber="208"
@@ -50,7 +51,7 @@ const PickPlayers = ({ next }) => {
           pick={picked}
         />
         <Players
-          name="John Big Dog"
+          name={faker.name.findName()}
           role="Quarterback"
           primaryStat="Passing Yards"
           primaryNumber="305"
@@ -59,7 +60,7 @@ const PickPlayers = ({ next }) => {
           pick={picked}
         />
         <Players
-          name="Carly the Bold"
+          name={faker.name.findName()}
           role="Quarterback"
           primaryStat="Passing Yards"
           primaryNumber="505"
@@ -68,7 +69,7 @@ const PickPlayers = ({ next }) => {
           pick={picked}
         />
         <Players
-          name="Little Deshaun"
+          name={faker.name.findName()}
           role="Offensive Tackle"
           primaryStat="Quarterback sacks"
           primaryNumber="15"
@@ -77,7 +78,7 @@ const PickPlayers = ({ next }) => {
           pick={picked}
         />
         <Players
-          name="The Irene"
+          name={faker.name.findName()}
           role="Offensive Tackle"
           primaryStat="Quarterback sacks"
           primaryNumber="28"

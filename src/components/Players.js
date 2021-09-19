@@ -16,7 +16,7 @@ const Players = ({
 
   return (
     <article
-      className={`flex-1 w-5/12 mt-4 ${
+      className={`flex-1 w-5/12 mt-4 flex flex-col justify-between ${
         drafted ? "bg-blue-700 text-white" : " bg-white "
       }`}
     >

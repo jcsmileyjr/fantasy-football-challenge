@@ -42,6 +42,7 @@ function App() {
     return newBrackets;
   };
 
+  // Create the starting 16 teams
   const generateStartingBracket = () => {
     // Standing nine teams
     const teams = [
