@@ -111,7 +111,7 @@ function App() {
   };
 
   const clearGameStats = () => {
-    setStats([""]);
+    setStats([]);
   };
 
   // Gather the last round stats to be display on pop-up modal on the Brackets Screen
@@ -138,7 +138,7 @@ function App() {
 
   return (
     <div className="App flex-col h-screen">
-      <header className="flex-1 text-gray-900 text-center font-bold text-2xl">
+      <header className="flex-1 text-gray-900 text-center font-bold text-2xl sm:text-6xl sm:mb-4">
         Fantasy Football Challenge
       </header>
       <main>

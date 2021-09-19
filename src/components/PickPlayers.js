@@ -18,7 +18,6 @@ const PickPlayers = ({ next, buildRoster, teamPlayers }) => {
       let currentRoster = teamPlayers;
       currentRoster.push(player);
       buildRoster(currentRoster);
-      console.log(teamPlayers)
     }
 
     // Track number of picks      
@@ -40,7 +39,7 @@ const PickPlayers = ({ next, buildRoster, teamPlayers }) => {
         }`}
       >
         <NextButton title={buttonText} next={next} enable={enableNextButton} />
-        <p className="text-xs text-center">* Player selection is disable when roster is full</p>
+        <p className="text-xs sm:text-2xl text-center">* Player selection is disable when roster is full</p>
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
         {players.map((player, index) => {
