@@ -12,6 +12,7 @@ module.exports = {
       },
       backgroundImage: {
         "football-pattern": "url('/src/assets/helmets-1-title-blue-a.png')",
+        "football-names": "url('/src/assets/helmets-1-name-blue.png')",
       },
     },
   },

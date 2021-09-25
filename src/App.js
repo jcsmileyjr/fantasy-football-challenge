@@ -149,8 +149,8 @@ function App() {
   };
 
   return (
-    <div className="App flex-col h-screen bg-football-pattern bg-fixed bg-center bg-contain bg-no-repeat ">
-      <div className="bg-blue-300 bg-opacity-80">
+    <div className={`App flex-col h-screen bg-football-pattern bg-fixed bg-center bg-contain bg-no-repeat ${challengeStage === 0?"bg-football-pattern":"bg-none"} ${challengeStage === 1?"bg-football-names":"bg-none"} `} >
+      <div className={`bg-blue-300 bg-opacity-80 ${challengeStage > 1?"bg-opacity-100":"bg-none"}`}>
       <header className="flex-1 text-gray-900 text-center font-bold text-2xl sm:text-6xl sm:mb-4">
         Fantasy Football Challenge
       </header>

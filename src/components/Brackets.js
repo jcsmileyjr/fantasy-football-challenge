@@ -98,10 +98,10 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
         currentBrackets={currentBrackets}
       />
       <section>
-        {currentBrackets.length === 8 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 1 - 16 Teams</p>}
-        {currentBrackets.length === 4 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 2 - 8 Teams</p>}
-        {currentBrackets.length === 2 && <p className="text-center font-bold underline text-lg md:text-4xl ">Play Offs - 4 Teams</p>}
-        {currentBrackets.length === 1 && <p className="text-center font-bold underline text-lg md:text-4xl ">Championship - 2 Teams</p>}
+        {currentBrackets.length === 8 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 1: <span className="text-red-900">16 Teams</span></p>}
+        {currentBrackets.length === 4 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 2: <span className="text-red-900">8 Teams </span></p>}
+        {currentBrackets.length === 2 && <p className="text-center font-bold underline text-lg md:text-4xl ">Play Offs: <span className="text-red-900">4 Teams </span></p>}
+        {currentBrackets.length === 1 && <p className="text-center font-bold underline text-lg md:text-4xl ">Championship: <span className="text-red-900"> 2 Teams </span></p>}
       </section>
       <section className="-mt-12 small-phone:-mt-4">
         <NextButton title="Time to Play some Football" next={play} />
