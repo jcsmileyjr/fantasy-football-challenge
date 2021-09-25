@@ -149,7 +149,8 @@ function App() {
   };
 
   return (
-    <div className="App flex-col h-screen">
+    <div className="App flex-col h-screen bg-football-pattern bg-fixed bg-center bg-contain bg-no-repeat ">
+      <div className="bg-blue-300 bg-opacity-80">
       <header className="flex-1 text-gray-900 text-center font-bold text-2xl sm:text-6xl sm:mb-4">
         Fantasy Football Challenge
       </header>
@@ -180,6 +181,7 @@ function App() {
         )}
         {challengeStage === "won" && <Won restart={newGame} />}
       </main>
+      </div>
     </div>
   );
 }

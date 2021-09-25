@@ -10,6 +10,9 @@ module.exports = {
       screens: {
         "small-phone": { max: "330px" },
       },
+      backgroundImage: {
+        "football-pattern": "url('/src/assets/helmets-1-title-blue-a.png')",
+      },
     },
   },
   variants: {
