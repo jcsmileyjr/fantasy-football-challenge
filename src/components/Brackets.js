@@ -123,7 +123,7 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
           <NextButton title={`${ifPlaying() === false ? "Click to End the Season":"Let's Play some Football"}`} next={play} />
         </section>
         <section className="xl:w-5/12 xl:mx-auto xl:mt-4 mt-4">
-          {ifPlaying() === false && <p className="text-white text-center">Team <span className="text-yellow-500">{userTeam} </span> was defeated</p>}
+          {ifPlaying() === false && <p className="text-white text-center">Team <span className={`font-bold font-serif ${ifPlaying()===false ? "text-black":"text-yellow-500"}`}>" {userTeam} " </span> was defeated</p>}
           {currentBrackets.map((bracket, index) => {
             return (
               <Bracket
