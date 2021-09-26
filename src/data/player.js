@@ -4,13 +4,14 @@ const userDraft = (list) => {
   let drafts = [];
   let draft = [];
   for(let i=0;i<6;i++){
-    const randomNumber = getRandomInt(0,47);
+    const randomNumber = getRandomInt(0,list.length);
     let player = list.splice(randomNumber,1);
     draft.push(player[0]) ;
   }
   
   drafts.push(draft);
   drafts.push(list);
+  console.table(draft)
   return drafts;
 }
 
