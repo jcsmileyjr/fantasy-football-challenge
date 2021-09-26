@@ -53,7 +53,7 @@ const Bracket = ({ home, visiting, userTeam }) => {
           src={BlueHelmet}
           alt="Blue football helmet"
         />
-        <strong className="text-3xl md:text-6xl text-red-600">VS</strong>
+        <strong className="text-3xl md:text-6xl text-yellow-500">VS</strong>
         <img
           className="w-1/4 md:w-1/5 lg:w-1/6"
           src={BlackHelmet}
@@ -63,14 +63,14 @@ const Bracket = ({ home, visiting, userTeam }) => {
       <div className="flex justify-between flex-row mx-4">
         <p
           className={`font-bold  md:text-3xl font-serif ${
-            home === userTeam ? "text-green-500" : visiting === userTeam ? "text-gray-900":"text-yellow-500"
+            home === userTeam ? "text-green-500" : visiting === userTeam ? "text-gray-900":"text-white"
           }`}
         >
           {home}
         </p>
         <p
           className={`font-bold  md:text-3xl font-serif ${
-            visiting === userTeam ? "text-green-500" : home === userTeam ? "text-gray-900":"text-yellow-500"
+            visiting === userTeam ? "text-green-500" : home === userTeam ? "text-gray-900":"text-white"
           } `}
         >
           {visiting}
@@ -100,10 +100,10 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
         closeModal={closeModal}
       />
       <section>
-        {currentBrackets.length === 8 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 1: <span className="text-red-500">16 Teams</span></p>}
-        {currentBrackets.length === 4 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 2: <span className="text-red-500">8 Teams </span></p>}
-        {currentBrackets.length === 2 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Play Offs: <span className="text-red-500">4 Teams </span></p>}
-        {currentBrackets.length === 1 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Championship: <span className="text-red-500"> 2 Teams </span></p>}
+        {currentBrackets.length === 8 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 1: <span className="text-yellow-500">16 Teams</span></p>}
+        {currentBrackets.length === 4 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 2: <span className="text-yellow-500">8 Teams </span></p>}
+        {currentBrackets.length === 2 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Play Offs: <span className="text-yellow-500">4 Teams </span></p>}
+        {currentBrackets.length === 1 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Championship: <span className="text-yellow-500"> 2 Teams </span></p>}
       </section>
       <div className={`${showModal && currentBrackets.length !== 8 ? "opacity-20":""}`}>
         <section className=" small-phone:-mt-4 -mt-8">
