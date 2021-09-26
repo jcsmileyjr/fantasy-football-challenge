@@ -150,9 +150,9 @@ function App() {
   };
 
   return (
-    <div className={`App flex-col h-screen bg-fixed bg-center bg-contain bg-no-repeat ${challengeStage === 0?"bg-football-pattern":"bg-blue-300"} ${challengeStage === 1?"bg-football-names":"bg-blue-300"} `} >
-      <div className={`bg-blue-300 bg-opacity-80 ${challengeStage > 1?"bg-opacity-100":"bg-none"}`}>
-        <header className="flex-1 text-gray-900 text-center font-bold text-2xl sm:text-6xl sm:mb-4">
+    <div className={`App flex-col h-screen bg-fixed bg-center bg-contain bg-no-repeat ${challengeStage === 0?"bg-football-pattern":"bg-blue-900"} ${challengeStage === 1?"bg-football-names":"bg-blue-900"} `} >
+      <div className={`bg-blue-900 bg-opacity-80 ${challengeStage > 1?"bg-opacity-100":"bg-none"}`}>
+        <header className="flex-1 text-green-300 text-center font-bold text-2xl sm:text-6xl sm:mb-4">
           Fantasy Football Challenge
         </header>
         <main>

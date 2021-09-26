@@ -3,16 +3,7 @@ import BlackHelmet from "../assets/black-helmet.png";
 import NextButton from "./NextButton";
 import React, { useState, useEffect } from "react";
 
-const Stats = ({ stats, userTeam, currentBrackets }) => {
-  const [showModal, setModal] = useState(true);
-  useEffect(() => {
-    setModal(true);
-  }, [currentBrackets]);
-
-  const closeModal = () => {
-    setModal(false);
-  };
-
+const Stats = ({ stats, userTeam, currentBrackets, showModal, closeModal }) => {
   return (
     <section
       className={`bg-gray-100 absolute mt-20 z-10 w-10/12 mx-8 md:mx-16 lg:mx-20 xl:mx-60 2xl:mx-96 xl:w-8/12 2xl:w-6/12 rounded ${
@@ -53,7 +44,7 @@ const Bracket = ({ home, visiting, userTeam }) => {
   return (
     <section
       className={`flex flex-col md:mb-2 ${
-        userTeam === home || userTeam === visiting ? "bg-white" : ""
+        userTeam === home || userTeam === visiting ? "bg-gray-50" : ""
       }`}
     >
       <div className="flex justify-around items-center flex-row">
@@ -71,16 +62,16 @@ const Bracket = ({ home, visiting, userTeam }) => {
       </div>
       <div className="flex justify-between flex-row mx-4">
         <p
-          className={`font-bold md:text-3xl ${
-            home === userTeam ? "text-green-500" : ""
+          className={`font-bold  md:text-3xl font-serif ${
+            home === userTeam ? "text-green-500" : visiting === userTeam ? "text-gray-900":"text-yellow-500"
           }`}
         >
           {home}
         </p>
         <p
-          className={`font-bold md:text-3xl ${
-            visiting === userTeam ? "text-green-500 font-serif" : ""
-          }`}
+          className={`font-bold  md:text-3xl font-serif ${
+            visiting === userTeam ? "text-green-500" : home === userTeam ? "text-gray-900":"text-yellow-500"
+          } `}
         >
           {visiting}
         </p>
@@ -90,34 +81,47 @@ const Bracket = ({ home, visiting, userTeam }) => {
 };
 
 const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
+  const [showModal, setModal] = useState(true);
+  useEffect(() => {
+    setModal(true);
+  }, [currentBrackets]);
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
   return (
     <article className="relative z-0">
       <Stats
         stats={roundStats}
         userTeam={userTeam}
         currentBrackets={currentBrackets}
+        showModal ={showModal}
+        closeModal={closeModal}
       />
       <section>
-        {currentBrackets.length === 8 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 1: <span className="text-red-900">16 Teams</span></p>}
-        {currentBrackets.length === 4 && <p className="text-center font-bold underline text-lg md:text-4xl ">Round 2: <span className="text-red-900">8 Teams </span></p>}
-        {currentBrackets.length === 2 && <p className="text-center font-bold underline text-lg md:text-4xl ">Play Offs: <span className="text-red-900">4 Teams </span></p>}
-        {currentBrackets.length === 1 && <p className="text-center font-bold underline text-lg md:text-4xl ">Championship: <span className="text-red-900"> 2 Teams </span></p>}
+        {currentBrackets.length === 8 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 1: <span className="text-red-500">16 Teams</span></p>}
+        {currentBrackets.length === 4 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 2: <span className="text-red-500">8 Teams </span></p>}
+        {currentBrackets.length === 2 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Play Offs: <span className="text-red-500">4 Teams </span></p>}
+        {currentBrackets.length === 1 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Championship: <span className="text-red-500"> 2 Teams </span></p>}
       </section>
-      <section className="-mt-12 small-phone:-mt-4">
-        <NextButton title="Time to Play some Football" next={play} />
-      </section>
-      <section className="xl:w-5/12 xl:mx-auto xl:mt-4">
-        {currentBrackets.map((bracket, index) => {
-          return (
-            <Bracket
-              home={bracket.home}
-              visiting={bracket.visiting}
-              key={index}
-              userTeam={userTeam}
-            />
-          );
-        })}
-      </section>
+      <div className={`${showModal && currentBrackets.length !== 8 ? "opacity-20":""}`}>
+        <section className=" small-phone:-mt-4 -mt-8">
+          <NextButton title="Time to Play some Football" next={play} />
+        </section>
+        <section className="xl:w-5/12 xl:mx-auto xl:mt-4 mt-4">
+          {currentBrackets.map((bracket, index) => {
+            return (
+              <Bracket
+                home={bracket.home}
+                visiting={bracket.visiting}
+                key={index}
+                userTeam={userTeam}
+              />
+            );
+          })}
+        </section>
+      </div>
     </article>
   );
 };

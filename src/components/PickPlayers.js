@@ -38,7 +38,7 @@ const PickPlayers = ({ next, buildRoster, teamPlayers, draft }) => {
         }`}
       >
         <NextButton title={buttonText} next={next} enable={enableNextButton} />
-        <p className="text-xs sm:text-2xl text-center">* Player selection is disable when roster is full</p>
+        <p className="text-xs sm:text-2xl text-center text-white">* Player selection is disable when roster is full</p>
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
         {draft.map((player, index) => {
