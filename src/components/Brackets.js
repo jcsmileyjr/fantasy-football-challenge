@@ -90,6 +90,19 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
     setModal(false);
   };
 
+  const ifPlaying = () => {
+    let playing = false;
+    currentBrackets.forEach((team) => {
+      for (let key in team) {
+        if (team[key] === userTeam) {
+          playing = true;
+          return;
+        }
+      }
+    });
+    return playing;
+  }
+
   return (
     <article className="relative z-0">
       <Stats
@@ -107,9 +120,10 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
       </section>
       <div className={`${showModal && currentBrackets.length !== 8 ? "opacity-20":""}`}>
         <section className=" small-phone:-mt-4 -mt-8">
-          <NextButton title="Time to Play some Football" next={play} />
+          <NextButton title={`${ifPlaying() === false ? "Click to End the Season":"Let's Play some Football"}`} next={play} />
         </section>
         <section className="xl:w-5/12 xl:mx-auto xl:mt-4 mt-4">
+          {ifPlaying() === false && <p className="text-white text-center">Team <span className="text-yellow-500">{userTeam} </span> was defeated</p>}
           {currentBrackets.map((bracket, index) => {
             return (
               <Bracket
