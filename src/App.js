@@ -94,6 +94,7 @@ function App() {
 
     if (canPlay === false) {
       setChallengeStage("lose");
+      return;
     }
 
     if (currentBrackets.length === 1) {
