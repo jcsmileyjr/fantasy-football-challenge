@@ -27,7 +27,7 @@ const Players = ({
         <p className={`font-bold text-sm sm:text-2xl ${drafted?"text-white":"text-red-500"}`}>{role}</p>
       </section>
       <section className="mb-2">
-        <img className="mx-auto max-h-24" src={picture} alt="player" />
+        <img className="mx-auto max-h-16" src={picture} alt="player" />
       </section>
       <section className="text-xs flex flex-col justify-between mx-2 sm:mx-auto md:w-10/12 lg:w-2/3">
         <div className="flex flex-row justify-between sm:text-2xl">
