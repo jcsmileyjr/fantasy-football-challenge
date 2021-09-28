@@ -30,7 +30,7 @@ const Stats = ({ stats, userTeam, currentBrackets, showModal, closeModal }) => {
       <div className="flex justify-center mt-4">
         <buttton
           type="button"
-          className="text-sm mb-2 py-1 px-4 md:py-2 md:px-8 lg:py-4 lg:px-12 xl:px-6 xl:py-2 2xl:px-6 2xl:py-2 rounded-lg md:text-2xl lg:text-3xl bg-red-700 font-bold"
+          className="hover:text-white text-sm mb-2 py-1 px-4 md:py-2 md:px-8 lg:py-4 lg:px-12 xl:px-6 xl:py-2 2xl:px-6 2xl:py-2 rounded-lg md:text-2xl lg:text-3xl bg-red-700 font-bold"
           onClick={closeModal}
         >
           Close
