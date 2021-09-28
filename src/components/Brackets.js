@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 const Stats = ({ stats, userTeam, currentBrackets, showModal, closeModal }) => {
   return (
     <section
-      className={`bg-gray-100 absolute mt-20 z-10 w-10/12 mx-8 md:mx-16 lg:mx-20 xl:mx-60 2xl:mx-96 xl:w-8/12 2xl:w-6/12 rounded ${
+      className={`bg-gray-100 absolute inset-x-0 mx-auto mt-20 z-10 w-10/12 xl:w-8/12 2xl:w-6/12 rounded ${
         showModal ? "block" : "hidden"
       } ${currentBrackets.length >= 7 ? "hidden" : ""}`}
     >
