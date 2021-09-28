@@ -42,7 +42,7 @@ const PickPlayers = ({ next, buildRoster, teamPlayers, draft }) => {
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
         {draft.map((player, index) => {
-          return <Players key={index} enable={!enableNextButton} name={player.name} role={player.role} primaryStat={player.primaryStat} primaryNumber={player.primaryNumber} seconaryNumber={player.seconaryNumber} secondaryStat={player.secondaryStat} pick={() =>picked(player)} /> 
+          return <Players key={index} enable={!enableNextButton} name={player.name} role={player.role} primaryStat={player.primaryStat} primaryNumber={player.primaryNumber} picture={player['picture']} seconaryNumber={player.seconaryNumber} secondaryStat={player.secondaryStat} pick={() =>picked(player)} /> 
         })}
       </section>
     </article>

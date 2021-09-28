@@ -5,6 +5,7 @@ const Players = ({
   role,
   primaryStat,
   primaryNumber,
+  picture,
   secondaryStat,
   seconaryNumber,
   pick,
@@ -24,6 +25,9 @@ const Players = ({
       <section className="text-center mb-4">
         <strong className="text-xl sm:text-3xl small-phone:text-lg">{name}</strong>
         <p className={`font-bold text-sm sm:text-2xl ${drafted?"text-white":"text-red-500"}`}>{role}</p>
+      </section>
+      <section className="mb-2">
+        <img className="mx-auto max-h-24" src={picture} alt="player" />
       </section>
       <section className="text-xs flex flex-col justify-between mx-2 sm:mx-auto md:w-10/12 lg:w-2/3">
         <div className="flex flex-row justify-between sm:text-2xl">
