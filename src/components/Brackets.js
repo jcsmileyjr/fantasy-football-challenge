@@ -18,7 +18,7 @@ const Stats = ({ stats, userTeam, currentBrackets, showModal, closeModal }) => {
           return (
             <li
               key={index}
-              className={`${
+              className={`my-2 ${
                 stat.includes(userTeam) ? "bg-white font-bold " : ""
               }`}
             >
@@ -47,13 +47,13 @@ const Bracket = ({ home, visiting, userTeam }) => {
         userTeam === home || userTeam === visiting ? "bg-gray-50" : ""
       }`}
     >
-      <div className="flex justify-around items-center flex-row">
+      <div className="flex justify-around items-center flex-row mt-2">
         <img
           className="w-1/4 md:w-1/5 lg:w-1/6"
           src={BlueHelmet}
           alt="Blue football helmet"
         />
-        <strong className="text-3xl md:text-6xl text-yellow-500">VS</strong>
+        <strong className="text-3xl md:text-6xl text-yellow-500 mt-2">VS</strong>
         <img
           className="w-1/4 md:w-1/5 lg:w-1/6"
           src={BlackHelmet}

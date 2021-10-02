@@ -74,7 +74,7 @@ function App() {
       { name: "Pink Flaming Candles", rivals: [] },
       { name: "Roaring Bears", rivals: [] },
       { name: "Striking Tigers", rivals: [] },
-      { name: "Seanky Snakes", rivals: [] },
+      { name: "Sneaky Snakes", rivals: [] },
       { name: "Leaping Frogs", rivals: [] },
       { name: "Black Panthers", rivals: [] },
       { name: "Painful Worms", rivals: [] },
@@ -209,11 +209,13 @@ function App() {
 
   // Gather the last round stats to be display on pop-up modal on the Brackets Screen
   const gatherStats = (outcome, home, visiting, gameType) => {
+    let winningScore = Math.floor(Math.random() * 35) + 14;
+    let losingScore = Math.floor(Math.random() * 14) + 0;
     let stat = "";
     if (outcome < 0.5) {
-      stat = `${home} won against ${visiting} with higher ${gameType.toLowerCase()}.`;
+      stat = `${home} wins, ${winningScore} to ${losingScore}, against ${visiting} with higher ${gameType.toLowerCase()}.`;
     } else {
-      stat = `${home} lose against ${visiting} superior ${gameType.toLowerCase()}.`;
+      stat = `${home} loses, ${losingScore} to ${winningScore}, against ${visiting} superior ${gameType.toLowerCase()}.`;
     }
 
     let gameStats = currentPlayOffStats;
