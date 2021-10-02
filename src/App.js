@@ -50,12 +50,17 @@ function App() {
     // Create a new array of dual team objects
     let newBrackets = [];
     for (let i = 0; i < oddTeams.length; i++) {
+      // let bracket = {
+      //   home: oddTeams[i].name,
+      //   homeTeam: oddTeams[i].rivals,
+      //   visiting: evenTeams[i].name,
+      //   visitingTeam: evenTeams[i].rivals,
+      // };
+
       let bracket = {
-        home: oddTeams[i].name,
-        homeTeam: oddTeams[i].rivals,
-        visiting: evenTeams[i].name,
-        visitingTeam: evenTeams[i].rivals,
-      };
+        homeTeam: oddTeams[i],
+        visitingTeam: evenTeams[i]
+      }
       //console.table(bracket)
       newBrackets.push(bracket);
     }
@@ -97,7 +102,7 @@ function App() {
     let canPlay = false;
     currentBrackets.forEach((team) => {
       for (let key in team) {
-        if (team[key] === teamname) {
+        if (team[key].name === teamname) {
           console.log(`${teamname} can play`)
           canPlay = true;
           return;
@@ -125,13 +130,13 @@ function App() {
 
     clearGameStats();
 
-    const outcomes = currentBrackets.map((team, index) => {
-      console.log(team)
-      if (team.home === teamname) {
-        team.homeTeam[0] = roster;
+    const outcomes = currentBrackets.map((competingTeams) => {
+      //console.log(competingTeams)
+      if (competingTeams.homeTeam.name === teamname) {
+        competingTeams.homeTeam.rivals = roster;
       }
-      if (team.visiting === teamname) {
-        team.visitingTeam[0] = roster;
+      if (competingTeams.visitingTeam.name === teamname) {
+        competingTeams.visitingTeam.rivals = roster;
       }
 
       // Figure out if its a passing game, running game, or tackle game
@@ -148,7 +153,8 @@ function App() {
 
       // find players on each team with roles and highest stats (homeTeam & visitingTeam)
       let homeStarPlayer = { primaryStat: currentGameType, primaryNumber: 0 };
-      team.homeTeam[0].forEach((person) => {
+  //console.log(competingTeams.homeTeam.rivals);
+      competingTeams.homeTeam.rivals.forEach((person) => {
         //console.log(`${person.name} has stat ${person.primaryStat} and number ${person.primaryNumber}`)
         if (
           person.primaryNumber > homeStarPlayer.primaryNumber &&
@@ -162,7 +168,7 @@ function App() {
         primaryStat: currentGameType,
         primaryNumber: 0,
       };
-      team.visitingTeam[0].forEach((person) => {
+      competingTeams.visitingTeam.rivals.forEach((person) => {
         //console.log(`${person.name} has stat ${person.primaryStat} and number ${person.primaryNumber}`)
         if (
           person.primaryNumber > visitingStarPlayer.primaryNumber &&
@@ -187,19 +193,19 @@ function App() {
 
       let gameOutcome = flipOutcome + skillOutcome;
 
-      // if (team.home === teamname || team.visiting === teamname) {
-      //   console.log(
-      //     `${team.home} vs ${team.visiting} - flipoutcome: ${flipOutcome} + skillcome: ${skillOutcome} = ${gameOutcome}`
-      //   );
-      // }
+      if (competingTeams.homeTeam.name === teamname || competingTeams.visitingTeam.name === teamname) {
+        console.log(
+          `${competingTeams.homeTeam.name} vs ${competingTeams.visitingTeam.name} - flipoutcome: ${flipOutcome} + skillcome: ${skillOutcome} = ${gameOutcome}`
+        );
+      }
 
-      gatherStats(gameOutcome, team.home, team.visiting);
+      gatherStats(gameOutcome, competingTeams.homeTeam.name, competingTeams.visitingTeam.name);
       if (gameOutcome < 0.5) {
-        return {name:team.home, rivals:team.homeTeam};
-        //return team.home;
+        //return {name:competingTeams.home, rivals:competingTeams.homeTeam};
+        return competingTeams.homeTeam;
       } else {
-        return {name:team.visiting, rivals:team.visitingTeam}
-        //return team.visiting;
+        //return {name:competingTeams.visiting, rivals:competingTeams.visitingTeam}
+        return competingTeams.visitingTeam;
       }
     });
 

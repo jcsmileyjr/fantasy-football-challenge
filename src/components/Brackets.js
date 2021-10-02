@@ -92,9 +92,9 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
 
   const ifPlaying = () => {
     let playing = false;
-    currentBrackets.forEach((team) => {
-      for (let key in team) {
-        if (team[key] === userTeam) {
+    currentBrackets.forEach((competingTeams) => {
+      for (let key in competingTeams) {
+        if (competingTeams[key].name === userTeam) {
           playing = true;
           return;
         }
@@ -127,8 +127,8 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
           {currentBrackets.map((bracket, index) => {
             return (
               <Bracket
-                home={bracket.home}
-                visiting={bracket.visiting}
+                home={bracket.homeTeam.name}
+                visiting={bracket.visitingTeam.name}
                 key={index}
                 userTeam={userTeam}
               />
