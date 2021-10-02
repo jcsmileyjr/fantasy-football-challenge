@@ -128,10 +128,10 @@ function App() {
 
     const outcomes = currentBrackets.map((competingTeams) => {
       if (competingTeams.homeTeam.name === teamname) {
-        competingTeams.homeTeam.rivals = roster;
+        competingTeams.homeTeam.rivals[0] = roster;
       }
       if (competingTeams.visitingTeam.name === teamname) {
-        competingTeams.visitingTeam.rivals = roster;
+        competingTeams.visitingTeam.rivals[0] = roster;
       }
 
       // Figure out if its a passing game, running game, or tackle game
@@ -146,47 +146,53 @@ function App() {
       }
 
       // find players on each team with roles and highest stats (homeTeam & visitingTeam)
-      let homeStarPlayer = { primaryStat: currentGameType, primaryNumber: 0 };
-      competingTeams.homeTeam.rivals.forEach((person) => {
+      //let homeStarPlayer = { primaryStat: currentGameType, primaryNumber: 0 };
+      let homeStarPlayer = 0;
+      console.table(competingTeams.homeTeam.rivals[0])
+      competingTeams.homeTeam.rivals[0].forEach((person) => {
+        console.log(person.primaryNumber)
         if (
-          person.primaryNumber > homeStarPlayer.primaryNumber &&
+          person.primaryNumber > homeStarPlayer &&
           person.primaryStat === currentGameType
         ) {
-          homeStarPlayer = person;
+          console.log("new player")
+          homeStarPlayer = person.primaryNumber;
         }
       });
+      //console.log(homeStarPlayer)
 
-      let visitingStarPlayer = {
-        primaryStat: currentGameType,
-        primaryNumber: 0,
-      };
-      competingTeams.visitingTeam.rivals.forEach((person) => {
+      // let visitingStarPlayer = {
+      //   primaryStat: currentGameType,
+      //   primaryNumber: 0,
+      // };
+      let visitingStarPlayer= 0;
+      competingTeams.visitingTeam.rivals[0].forEach((person) => {
         if (
-          person.primaryNumber > visitingStarPlayer.primaryNumber &&
+          person.primaryNumber > visitingStarPlayer &&
           person.primaryStat === currentGameType
         ) {
-          visitingStarPlayer = person;
+          visitingStarPlayer = person.primaryNumber;
         }
       });
 
       // Compare players to determine who has the highest stat. That outcome gives or recieve an extra .
       let skillOutcome =
-        homeStarPlayer.primaryNumber > visitingStarPlayer.primaryNumber
+        homeStarPlayer > visitingStarPlayer
           ? -0.2
           : 0.2;
-
-      // state the type of game and stand out player/stat
 
       // Random number between 0 and 1.
       let flipOutcome = Math.random();
 
       let gameOutcome = flipOutcome + skillOutcome;
 
-      if (competingTeams.homeTeam.name === teamname || competingTeams.visitingTeam.name === teamname) {
+      //console.log(homeStarPlayer);
+      //console.log(visitingStarPlayer);
+      //if (competingTeams.homeTeam.name === teamname || competingTeams.visitingTeam.name === teamname) {
         console.log(
-          `${competingTeams.homeTeam.name} with ${homeStarPlayer.primaryNumber} vs ${competingTeams.visitingTeam.name} with ${visitingStarPlayer.primaryNumber} - flipoutcome: ${flipOutcome} + skillcome: ${skillOutcome} = ${gameOutcome}`
+          `${competingTeams.homeTeam.name} with ${homeStarPlayer} vs ${competingTeams.visitingTeam.name} with ${visitingStarPlayer} - flipoutcome: ${flipOutcome} + skillcome: ${skillOutcome} = ${gameOutcome}`
         );
-      }
+//}
 
       gatherStats(gameOutcome, competingTeams.homeTeam.name, competingTeams.visitingTeam.name);
       if (gameOutcome < 0.5) {
