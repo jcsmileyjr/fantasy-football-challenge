@@ -245,7 +245,7 @@ function App() {
     let playing = false;
     currentBrackets.forEach((team) => {
       for (let key in team) {
-        if (team[key] === teamname) {
+        if (team[key].name === teamname) {
           playing = true;
           return;
         }
