@@ -5,7 +5,7 @@ const Lose = ({team, restart, games}) => {
         <article className="h-screen flex flex-col ">
             <img src={Helmets} alt="blue and black clashing football helmets" className="lg:w-7/12 xl:w-6/12 2xl:w-5/12 lg:mx-auto" />
             <h1 className="mt-4 font-bold text-white text-3xl md:text-6xl text-center">Game Over</h1>
-            {games.length === 1 && (games.home === team || games.visiting === team)
+            {games.length === 1
                 ?<p className="mt-2 mx-4 text-center text-yellow-300 text-xl md:text-2xl lg:text-4xl">Team "{team}" lose the Championship.</p>
                 :<p className="mt-2 mx-4 text-center text-yellow-300 text-xl md:text-2xl lg:text-4xl">Team "{team}" didn't make the play-offs.</p>
             }
