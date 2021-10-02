@@ -148,7 +148,7 @@ function App() {
       // find players on each team with roles and highest stats (homeTeam & visitingTeam)
       //let homeStarPlayer = { primaryStat: currentGameType, primaryNumber: 0 };
       let homeStarPlayer = 0;
-      console.table(competingTeams.homeTeam.rivals[0])
+      //console.table(competingTeams.homeTeam.rivals[0])
       competingTeams.homeTeam.rivals[0].forEach((person) => {
         console.log(person.primaryNumber)
         if (
@@ -159,12 +159,7 @@ function App() {
           homeStarPlayer = person.primaryNumber;
         }
       });
-      //console.log(homeStarPlayer)
-
-      // let visitingStarPlayer = {
-      //   primaryStat: currentGameType,
-      //   primaryNumber: 0,
-      // };
+ 
       let visitingStarPlayer= 0;
       competingTeams.visitingTeam.rivals[0].forEach((person) => {
         if (
@@ -194,7 +189,7 @@ function App() {
         );
 //}
 
-      gatherStats(gameOutcome, competingTeams.homeTeam.name, competingTeams.visitingTeam.name);
+      gatherStats(gameOutcome, competingTeams.homeTeam.name, competingTeams.visitingTeam.name, currentGameType);
       if (gameOutcome < 0.5) {
         //return {name:competingTeams.home, rivals:competingTeams.homeTeam};
         return competingTeams.homeTeam;
@@ -213,12 +208,12 @@ function App() {
   };
 
   // Gather the last round stats to be display on pop-up modal on the Brackets Screen
-  const gatherStats = (outcome, home, visiting) => {
+  const gatherStats = (outcome, home, visiting, gameType) => {
     let stat = "";
     if (outcome < 0.5) {
-      stat = `${home} won against ${visiting}`;
+      stat = `${home} won against ${visiting} with higher ${gameType.toLowerCase()}.`;
     } else {
-      stat = `${home} lose against ${visiting}`;
+      stat = `${home} lose against ${visiting} superior ${gameType.toLowerCase()}.`;
     }
 
     let gameStats = currentPlayOffStats;

@@ -10,8 +10,8 @@ const Stats = ({ stats, userTeam, currentBrackets, showModal, closeModal }) => {
         showModal ? "block" : "hidden"
       } ${currentBrackets.length >= 7 ? "hidden" : ""}`}
     >
-      <p className="text-center text-2xl md:text-5xl lg:text-6xl font-bold text-green-500 underline mb-2">
-        Game Stats
+      <p className="text-center text-2xl md:text-5xl lg:text-6xl font-bold text-black underline mb-2">
+        Play-offs Stats
       </p>
       <ol className="mx-2 lg:mx-4 text-sm md:text-2xl lg:text-3xl xl:mx-10">
         {stats.map((stat, index) => {
