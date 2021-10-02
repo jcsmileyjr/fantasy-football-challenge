@@ -38,7 +38,10 @@ const PickPlayers = ({ next, buildRoster, teamPlayers, draft }) => {
         }`}
       >
         <NextButton title={buttonText} next={next} enable={enableNextButton} />
-        <p className="text-xs sm:text-2xl text-center text-white">* Player selection is disable when roster is full</p>
+        <p className="text-xs sm:text-2xl text-center text-white mt-2">* Player selection is disable when roster is full</p>
+      </section>
+      <section className="text-md sm:text-3xl text-black text-left mt-2 small-phone:mx-12 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-14 2xl:bg-transparent 2xl:text-white 2xl:text-center bg-white p-2">
+        <p>There are 6 players randomly choosen for this year's draft. Each game between teams is partially decided by a player with the highest randomly chosen skill. </p>
       </section>
       <section className="flex-1 flex flex-wrap flex-row justify-around gap-x-8 small-phone:mt-2">
         {draft.map((player, index) => {
