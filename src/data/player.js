@@ -8,13 +8,13 @@ const userDraft = (list) => {
     let player = list.splice(randomNumber, 1);
     
     player[0].picture = `https://avatars.dicebear.com/api/avataaars/:${player[0].name}.svg`;
-    console.log(player);
+    //console.log(player);
     draft.push(player[0]);
   }
 
   drafts.push(draft);
   drafts.push(list);
-  console.table(draft);
+  //console.table(draft);
   return drafts;
 };
 
@@ -27,7 +27,7 @@ function getRandomInt(min, max) {
 const createPlayers = () => {
   let playersList = [];
 
-  for (let i = 0; i < 48; i++) {
+  for (let i = 0; i < 51; i++) {
     let player = {};
     player.name = faker.name.findName();
     if (i % 5 === 0) {
