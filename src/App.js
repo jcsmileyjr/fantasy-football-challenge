@@ -36,7 +36,6 @@ function App() {
 
   // Take in an array of teams, randomize the array, split into even factions, and return an array of dual team objects.
   const generateBracket = (teams) => {
-    console.log(teams)
     teams.sort(() => Math.random() - 0.5); // Sort teams array
 
     const oddTeams = teams.filter((team, index) => {
@@ -61,10 +60,9 @@ function App() {
         homeTeam: oddTeams[i],
         visitingTeam: evenTeams[i]
       }
-      //console.table(bracket)
+  
       newBrackets.push(bracket);
     }
-    //console.table(newBrackets);
     return newBrackets;
   };
 
@@ -92,7 +90,7 @@ function App() {
     teams.forEach((team) => {
       team.rivals.push(list.splice(0, 3));
     });
-    //console.table(teams);
+    
     teams.push({ name: teamname, rivals: [] }); // Add user's enter team to array of teams
     setBrackets(generateBracket(teams)); // Save new brackets to state
   };
@@ -103,7 +101,6 @@ function App() {
     currentBrackets.forEach((team) => {
       for (let key in team) {
         if (team[key].name === teamname) {
-          console.log(`${teamname} can play`)
           canPlay = true;
           return;
         }
@@ -117,7 +114,6 @@ function App() {
 
     // FIX ISSUE: SHOULD BE DETERMINE WITH SKILLS
     if (currentBrackets.length === 1) {
-      console.log(`Championship is being held`)
       let championship = Math.random();
       if (championship < 0.5) {
         setChallengeStage("won");
@@ -131,7 +127,6 @@ function App() {
     clearGameStats();
 
     const outcomes = currentBrackets.map((competingTeams) => {
-      //console.log(competingTeams)
       if (competingTeams.homeTeam.name === teamname) {
         competingTeams.homeTeam.rivals = roster;
       }
@@ -141,7 +136,6 @@ function App() {
 
       // Figure out if its a passing game, running game, or tackle game
       let gameTypes = Math.floor(Math.random() * 10) + 1;
-      //console.log(`Game type random number is ${gameTypes}`);
       let currentGameType = "";
       if (gameTypes <= 3) {
         currentGameType = "Passing Yards";
@@ -153,9 +147,7 @@ function App() {
 
       // find players on each team with roles and highest stats (homeTeam & visitingTeam)
       let homeStarPlayer = { primaryStat: currentGameType, primaryNumber: 0 };
-  //console.log(competingTeams.homeTeam.rivals);
       competingTeams.homeTeam.rivals.forEach((person) => {
-        //console.log(`${person.name} has stat ${person.primaryStat} and number ${person.primaryNumber}`)
         if (
           person.primaryNumber > homeStarPlayer.primaryNumber &&
           person.primaryStat === currentGameType
@@ -169,7 +161,6 @@ function App() {
         primaryNumber: 0,
       };
       competingTeams.visitingTeam.rivals.forEach((person) => {
-        //console.log(`${person.name} has stat ${person.primaryStat} and number ${person.primaryNumber}`)
         if (
           person.primaryNumber > visitingStarPlayer.primaryNumber &&
           person.primaryStat === currentGameType
@@ -179,8 +170,6 @@ function App() {
       });
 
       // Compare players to determine who has the highest stat. That outcome gives or recieve an extra .
-      //console.table(homeStarPlayer);
-      //console.table(visitingStarPlayer);
       let skillOutcome =
         homeStarPlayer.primaryNumber > visitingStarPlayer.primaryNumber
           ? -0.2
@@ -195,7 +184,7 @@ function App() {
 
       if (competingTeams.homeTeam.name === teamname || competingTeams.visitingTeam.name === teamname) {
         console.log(
-          `${competingTeams.homeTeam.name} vs ${competingTeams.visitingTeam.name} - flipoutcome: ${flipOutcome} + skillcome: ${skillOutcome} = ${gameOutcome}`
+          `${competingTeams.homeTeam.name} with ${homeStarPlayer.primaryNumber} vs ${competingTeams.visitingTeam.name} with ${visitingStarPlayer.primaryNumber} - flipoutcome: ${flipOutcome} + skillcome: ${skillOutcome} = ${gameOutcome}`
         );
       }
 
@@ -209,9 +198,7 @@ function App() {
       }
     });
 
-    //console.table(outcomes)
     let newBracket = generateBracket(outcomes);
-    //console.table(newBracket)
     setBrackets(newBracket);
   };
 
