@@ -73,7 +73,7 @@ const Bracket = ({ home, visiting, userTeam }) => {
           {home}
         </p>
         <p
-          className={`font-bold  md:text-3xl font-serif ${
+          className={`font-bold  md:text-3xl font-serif text-right ${
             visiting === userTeam ? "text-green-500" : home === userTeam ? "text-gray-900":"text-white"
           } `}
         >
