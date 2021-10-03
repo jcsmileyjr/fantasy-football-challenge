@@ -251,12 +251,12 @@ function App() {
 
   return (
     <div
-      className={`App flex-col h-screen bg-fixed bg-center bg-contain bg-no-repeat ${
+      className={`App flex-col h-screen bg-fixed bg-center bg-contain bg-no-repeat xl:bg-repeat ${
         challengeStage === 0 ? "bg-football-pattern" : "bg-blue-900"
       } ${challengeStage === 1 ? "bg-football-names" : "bg-blue-900"} `}
     >
       <div
-        className={` bg-opacity-80 h-screen ${
+        className={` bg-opacity-90 h-screen ${
           challengeStage > 1
             ? ifPlaying() === false
               ? "bg-red-700"
@@ -264,7 +264,7 @@ function App() {
             : "bg-blue-900"
         }`}
       >
-        <header className="flex-1 text-white text-center font-bold text-2xl sm:text-6xl sm:mb-4 mt-2">
+        <header className="flex-1 text-white text-center font-bold text-2xl sm:text-6xl lg:text-7xl xl:text-8xl sm:mb-4 mt-2">
           Fantasy Football Challenge
         </header>
         <main>
