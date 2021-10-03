@@ -12,7 +12,7 @@ const Lose = ({team, restart, games, generateStats}) => {
             }
             <section>
                 <h3 className="mt-4 font-bold text-white text-xl md:text-4xl text-center underline">Team Highlights </h3>
-                <ol className="mx-2 lg:mx-4 text-sm md:text-2xl lg:text-3xl xl:mx-10 mt-2">
+                <ol className="ml-8 mr-1 sm:ml-12 sm:mr-4 md:ml-24 md:mr-8 lg:ml-28 lg:mr-16 xl:mx-60 2xl:text-center text-sm md:text-2xl lg:text-3xl mt-2 ">
                 {seasonSummary.length === 0 &&
                 <p className="text-center text-white">None</p>
 
@@ -27,7 +27,7 @@ const Lose = ({team, restart, games, generateStats}) => {
                 </ol>
             </section>
             
-            <button type="button" className="mt-12 font-bold text-blue-900 bg-white rounded-2xl md:text-4xl mx-4 md:mx-20 lg:mx-40 xl:mx-60 md:py-2 lg:py-4" onClick={restart}>Play Again</button>
+            <button type="button" className="lg:mt-32 mt-12 font-bold text-blue-900 bg-white rounded-2xl md:text-4xl mx-4 md:mx-20 lg:mx-40 xl:mx-60 md:py-2 lg:py-4" onClick={restart}>Play Again</button>
         </article>
     );
 }

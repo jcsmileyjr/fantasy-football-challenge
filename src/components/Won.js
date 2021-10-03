@@ -13,7 +13,7 @@ const Won = ({restart, generateStats}) => {
             <p className="mt-2 mx-4 text-center text-xl md:text-3xl text-yellow-300">You are the Champion!!!</p>
             <section>
                 <h3 className="mt-4 font-bold text-white text-xl md:text-4xl text-center underline">Team Highlights </h3>
-                <ol className="mx-2 lg:mx-4 text-sm md:text-2xl lg:text-3xl xl:mx-10 mt-2">
+                <ol className="mml-8 mr-1 sm:ml-12 sm:mr-4 md:ml-24 md:mr-8 lg:ml-28 lg:mr-16 xl:mx-60 2xl:text-center text-sm md:text-2xl lg:text-3xl mt-2 ">
                 {seasonSummary.length === 0 &&
                 <p className="text-center text-white">None</p>
 
@@ -27,7 +27,7 @@ const Won = ({restart, generateStats}) => {
                 }
                 </ol>
             </section>
-            <button type="button" className="mt-12 font-bold text-blue-900 bg-white rounded-2xl md:text-4xl mx-4 lg:mx-60 xl:mx-80 2xl:mx-96" onClick={restart}>Play Again</button>
+            <button type="button" className="lg:mt-32 mt-12 font-bold text-blue-900 bg-white rounded-2xl md:text-4xl mx-4 lg:mx-60 xl:mx-80 2xl:mx-96" onClick={restart}>Play Again</button>
         </article>
     );
 };
