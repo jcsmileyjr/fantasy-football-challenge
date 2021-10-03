@@ -49,13 +49,6 @@ function App() {
     // Create a new array of dual team objects
     let newBrackets = [];
     for (let i = 0; i < oddTeams.length; i++) {
-      // let bracket = {
-      //   home: oddTeams[i].name,
-      //   homeTeam: oddTeams[i].rivals,
-      //   visiting: evenTeams[i].name,
-      //   visitingTeam: evenTeams[i].rivals,
-      // };
-
       let bracket = {
         homeTeam: oddTeams[i],
         visitingTeam: evenTeams[i]
@@ -271,7 +264,7 @@ function App() {
             : "bg-blue-900"
         }`}
       >
-        <header className="flex-1 text-white text-center font-bold text-2xl sm:text-6xl sm:mb-4">
+        <header className="flex-1 text-white text-center font-bold text-2xl sm:text-6xl sm:mb-4 mt-2">
           Fantasy Football Challenge
         </header>
         <main>

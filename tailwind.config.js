@@ -11,8 +11,8 @@ module.exports = {
         "small-phone": { max: "330px" },
       },
       backgroundImage: {
-        "football-pattern": "url('/src/assets/helmets-1-title-blue-a.png')",
-        "football-names": "url('/src/assets/helmets-1-name-blue.png')",
+        "football-pattern": "url('/src/assets/helmets-title-long.png')",
+        "football-names": "url('/src/assets/helmets-name-long-1.png')",
       },
     },
   },

@@ -53,7 +53,11 @@ const Bracket = ({ home, visiting, userTeam }) => {
           src={BlueHelmet}
           alt="Blue football helmet"
         />
-        <strong className="text-3xl md:text-6xl text-yellow-500 mt-2">VS</strong>
+        {home === userTeam || visiting ===userTeam ?
+          <strong className="text-3xl md:text-6xl text-yellow-500 mt-2">VS</strong>:
+          <strong className="text-3xl md:text-6xl text-yellow-300 mt-2">VS</strong>
+
+        }
         <img
           className="w-1/4 md:w-1/5 lg:w-1/6"
           src={BlackHelmet}
@@ -113,17 +117,17 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
         closeModal={closeModal}
       />
       <section>
-        {currentBrackets.length === 8 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 1: <span className="text-yellow-500">16 Teams</span></p>}
-        {currentBrackets.length === 4 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 2: <span className="text-yellow-500">8 Teams </span></p>}
-        {currentBrackets.length === 2 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Play Offs: <span className="text-yellow-500">4 Teams </span></p>}
-        {currentBrackets.length === 1 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Championship: <span className="text-yellow-500"> 2 Teams </span></p>}
+        {currentBrackets.length === 8 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 1: <span className="text-yellow-300">16 Teams</span></p>}
+        {currentBrackets.length === 4 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Round 2: <span className="text-yellow-300">8 Teams </span></p>}
+        {currentBrackets.length === 2 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Play Offs: <span className="text-yellow-300">4 Teams </span></p>}
+        {currentBrackets.length === 1 && <p className="text-center font-bold text-white underline text-lg md:text-4xl ">Championship: <span className="text-yellow-300"> 2 Teams </span></p>}
       </section>
       <div className={`${showModal && currentBrackets.length !== 8 ? "opacity-20":""}`}>
         <section className=" small-phone:-mt-4 -mt-8">
           <NextButton title={`${ifPlaying() === false ? "Click to End the Season":"Let's Play some Football"}`} next={play} />
         </section>
         <section className="xl:w-5/12 xl:mx-auto xl:mt-4 mt-4">
-          {ifPlaying() === false && <p className="text-white text-center">Team <span className={`font-bold font-serif ${ifPlaying()===false ? "text-black":"text-yellow-500"}`}>" {userTeam} " </span> was defeated</p>}
+          {ifPlaying() === false && <p className="text-white text-center">Team <span className={`font-bold font-serif ${ifPlaying()===false ? "text-black":"text-yellow-300"}`}>" {userTeam} " </span> was defeated</p>}
           {currentBrackets.map((bracket, index) => {
             return (
               <Bracket
