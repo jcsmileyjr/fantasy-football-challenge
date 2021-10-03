@@ -16,6 +16,7 @@ function App() {
   const [currentPlayOffStats, setStats] = useState([]);
   const [playerdraft, setPlayerDraft] = useState([]);
   const [allDraft, setAllDraft] = useState([]);
+  const [starPlayerSummary, setStarPlayerSummary] = useState([]);
 
   // main method in NextButton that moves user through the intial team creation screen
   const nextScreen = () => {
@@ -192,29 +193,71 @@ function App() {
     setStats(clearStats);
   };
 
+  const getStarPlayerStats = (name, gametype, stat) => {
+    // Attempt to find the player
+    let starSummary = starPlayerSummary;
+    let foundPlayer = -1;
+
+    starSummary.forEach((player, index) => {
+      if(player.name === name){
+        foundPlayer = index;
+      }
+    })
+
+    if(foundPlayer === -1){
+      // If not found, add new star player to array
+      starSummary.push({name:name, type:gametype, playoffStat: stat});
+    }else{
+      // If found, update the stat for that player
+      let newStat = starSummary[foundPlayer].playoffStat + stat;
+      starSummary[foundPlayer].playoffStat = newStat;
+    }
+
+    setStarPlayerSummary(starSummary); // update starPlayerSummary
+  }
+
+  // create another function that create the stats and hand over to the win or loss screens
+  const createStarStats = () => {
+    let stars = starPlayerSummary;
+    return stars.map(star => {
+      return `${star.name} ${star.type === "Passing Yards"?`passed for a career high of ${star.playoffStat} yards!`:""} ${star.type === "Rushing Yards"?`rushed for a career high of ${star.playoffStat} yards!`:""} ${star.type === "Quarterback sacks"?`had a career high of ${star.playoffStat} sacks!`:""} `
+    })
+
+  }
+
   // Gather the last round stats to be display on pop-up modal on the Brackets Screen
   const gatherStats = (outcome, home, visiting, gameType, homeStarPlayer, visitingStarPlayer) => {
     let winningScore = Math.floor(Math.random() * 35) + 14;
     let losingScore = Math.floor(Math.random() * 14) + 0;
 
-    // if the home team is my team and wins, then pick homeplayer
+    // if the home team is my team and wins, then pick homeplayer and save the player stats
     let topPlayerStat = "";
+    let potentialPasingYards = Math.floor(Math.random() * 400) + 100;
+    let potentialRushingYards = Math.floor(Math.random() * 200) + 80;
+    let potentialSacks = Math.floor(Math.random() * 20) + 5;
     if(outcome < 0.5 && homeStarPlayer.team === teamname){
+
       if(gameType === "Passing Yards"){
-        topPlayerStat = `. ${homeStarPlayer.playerName} threw for ${Math.floor(Math.random() * 400) + 100} passing yards!`;
+        topPlayerStat = `. ${homeStarPlayer.playerName} threw for ${potentialPasingYards} passing yards!`;
+        getStarPlayerStats(homeStarPlayer.playerName, gameType, potentialPasingYards);
       }else if(gameType === "Rushing Yards"){
-        topPlayerStat = `. ${homeStarPlayer.playerName} ran for ${Math.floor(Math.random() * 200) + 80} rushing yards!`;
+        topPlayerStat = `. ${homeStarPlayer.playerName} ran for ${potentialRushingYards} rushing yards!`;
+        getStarPlayerStats(homeStarPlayer.playerName, gameType, potentialRushingYards);
       }else{
-        topPlayerStat = `. ${homeStarPlayer.playerName} sack the quaterback ${Math.floor(Math.random() * 20) + 5} times!`;
+        topPlayerStat = `. ${homeStarPlayer.playerName} sack the quaterback ${potentialSacks} times!`;
+        getStarPlayerStats(homeStarPlayer.playerName, gameType, potentialSacks);
       }
     }
     if(outcome > 0.5 && visitingStarPlayer.team === teamname){
       if(gameType === "Passing Yards"){
-        topPlayerStat = `. ${visitingStarPlayer.playerName} threw for ${Math.floor(Math.random() * 400) + 100} passing yards!`;
+        topPlayerStat = `. ${visitingStarPlayer.playerName} threw for ${potentialPasingYards} passing yards!`;
+        getStarPlayerStats(visitingStarPlayer.playerName, gameType, potentialPasingYards);
       }else if(gameType === "Rushing Yards"){
-        topPlayerStat = `. ${visitingStarPlayer.playerName} ran for ${Math.floor(Math.random() * 200) + 80} rushing yards!`;
+        topPlayerStat = `. ${visitingStarPlayer.playerName} ran for ${potentialRushingYards} rushing yards!`;
+        getStarPlayerStats(visitingStarPlayer.playerName, gameType, potentialRushingYards);
       }else{
-        topPlayerStat = `. ${visitingStarPlayer.playerName} sack the quaterback ${Math.floor(Math.random() * 20) + 5} times!`;
+        topPlayerStat = `. ${visitingStarPlayer.playerName} sack the quaterback ${potentialSacks} times!`;
+        getStarPlayerStats(visitingStarPlayer.playerName, gameType, potentialSacks);
       }
     }
     
@@ -236,6 +279,10 @@ function App() {
     setRoster([]);
     setBrackets([]);
     clearGameStats();
+    
+    let clearSTarStummeary = starPlayerSummary
+    clearSTarStummeary.length = 0;
+    setStarPlayerSummary(clearSTarStummeary);
   };
 
   const ifPlaying = () => {
@@ -253,12 +300,12 @@ function App() {
 
   return (
     <div
-      className={`App flex-col h-screen bg-fixed bg-center bg-contain bg-no-repeat xl:bg-repeat ${
+      className={`App flex-col bg-fixed bg-center bg-contain bg-no-repeat xl:bg-repeat ${
         challengeStage === 0 ? "bg-football-pattern" : "bg-blue-900"
-      } ${challengeStage === 1 ? "bg-football-names" : "bg-blue-900"} ${challengeStage > 1 ? "h-full":""}`}
+      } ${challengeStage === 1 ? "bg-football-names" : "bg-blue-900"} ${challengeStage > 1 ? "h-full":"h-screen"}`}
     >
       <div
-        className={` bg-opacity-90 h-full ${
+        className={` bg-opacity-90 h-screen ${
           challengeStage > 1
             ? ifPlaying() === false
               ? "bg-red-700"
@@ -292,9 +339,9 @@ function App() {
             />
           )}
           {challengeStage === "lose" && (
-            <Lose restart={newGame} team={teamname} games={currentBrackets} />
+            <Lose restart={newGame} team={teamname} games={currentBrackets} generateStats={createStarStats} />
           )}
-          {challengeStage === "won" && <Won restart={newGame} />}
+          {challengeStage === "won" && <Won restart={newGame} generateStats={createStarStats} />}
         </main>
       </div>
     </div>
