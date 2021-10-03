@@ -270,7 +270,7 @@ function App() {
         <main>
           {challengeStage === 0 && <Title next={nextScreen} />}
           {challengeStage === 1 && (
-            <TeamName next={nextScreen} createTeam={setTeamName} />
+            <TeamName next={nextScreen} createTeam={setTeamName} teamName={teamname} />
           )}
           {challengeStage === 2 && (
             <PickPlayers
