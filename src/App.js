@@ -183,10 +183,8 @@ function App() {
 
       gatherStats(gameOutcome, competingTeams.homeTeam.name, competingTeams.visitingTeam.name, currentGameType, homeStar, visitingStar);
       if (gameOutcome < 0.5) {
-        //return {name:competingTeams.home, rivals:competingTeams.homeTeam};
         return competingTeams.homeTeam;
       } else {
-        //return {name:competingTeams.visiting, rivals:competingTeams.visitingTeam}
         return competingTeams.visitingTeam;
       }
     });
@@ -203,8 +201,7 @@ function App() {
   const gatherStats = (outcome, home, visiting, gameType, homeStarPlayer, visitingStarPlayer) => {
     let winningScore = Math.floor(Math.random() * 35) + 14;
     let losingScore = Math.floor(Math.random() * 14) + 0;
-console.log(`${home} === ${teamname} and ${homeStarPlayer.team}`)
-console.log(`${visiting} === ${teamname} && ${visitingStarPlayer.team}`)
+
     // if the home team is my team and wins, then pick homeplayer
     let topPlayerStat = "";
     if(outcome < 0.5 && homeStarPlayer.team === teamname){
@@ -215,7 +212,6 @@ console.log(`${visiting} === ${teamname} && ${visitingStarPlayer.team}`)
       }else{
         topPlayerStat = `. ${homeStarPlayer.playerName} sack the quaterback ${Math.floor(Math.random() * 20) + 5} times!`;
       }
-      //console.table(homeStarPlayer);
     }
     if(outcome > 0.5 && visitingStarPlayer.team === teamname){
       if(gameType === "Passing Yards"){
@@ -225,15 +221,13 @@ console.log(`${visiting} === ${teamname} && ${visitingStarPlayer.team}`)
       }else{
         topPlayerStat = `. ${visitingStarPlayer.playerName} sack the quaterback ${Math.floor(Math.random() * 20) + 5} times!`;
       }
-      //console.table(visitingStarPlayer);
     }
-    //let outstandingPlayer = outcome < 0.5 ?  :  ;
     
     let stat = "";
     if (outcome < 0.5) {
-      stat = `${home} wins, ${winningScore} to ${losingScore}, against ${visiting} ${home === teamname? topPlayerStat :`with higher ${gameType.toLowerCase()}.`}  `;
+      stat = `${home} wins, ${winningScore} to ${losingScore}, against ${visiting} ${home === teamname ? topPlayerStat :`with higher ${gameType.toLowerCase()}.`}  `;
     } else {
-      stat = `${home} loses, ${losingScore} to ${winningScore}, against ${visiting} ${visiting === teamname? topPlayerStat:`superior ${gameType.toLowerCase()}.`}  `;
+      stat = `${home} loses, ${losingScore} to ${winningScore}, against ${visiting} ${visiting === teamname ? topPlayerStat:`superior ${gameType.toLowerCase()}.`}  `;
     }
 
     let gameStats = currentPlayOffStats;
