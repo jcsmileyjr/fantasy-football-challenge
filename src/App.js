@@ -187,7 +187,9 @@ function App() {
   };
 
   const clearGameStats = () => {
-    setStats([]);
+    let clearStats = currentPlayOffStats;
+    clearStats.length = 0;
+    setStats(clearStats);
   };
 
   // Gather the last round stats to be display on pop-up modal on the Brackets Screen
