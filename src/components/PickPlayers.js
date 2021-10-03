@@ -21,7 +21,7 @@ const PickPlayers = ({ next, buildRoster, teamPlayers, draft }) => {
 
     // Track number of picks      
     if (teamPlayers.length === 3) {
-      setButtonText("Awesome, See the Game Brackets"); // Update "Next" button title content
+      setButtonText("See Game Brackets"); // Update "Next" button title content
       setNextButton(false); // Enable the "Next" button to navigate user to Brackets page
     } else {
       let buttonContent = `${3 - teamPlayers.length} remaining picks`;

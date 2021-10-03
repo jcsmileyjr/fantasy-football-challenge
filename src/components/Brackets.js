@@ -124,9 +124,9 @@ const Brackets = ({ play, currentBrackets, userTeam, roundStats }) => {
       </section>
       <div className={`${showModal && currentBrackets.length !== 8 ? "opacity-20":""}`}>
         <section className=" small-phone:-mt-4 -mt-8">
-          <NextButton title={`${ifPlaying() === false ? "Click to End the Season":"Let's Play some Football"}`} next={play} />
+          <NextButton title={`${ifPlaying() === false ? "End the Season":"Play Football"}`} next={play} />
         </section>
-        <section className="xl:w-5/12 xl:mx-auto xl:mt-4 mt-4">
+        <section className="uppercase xl:w-5/12 xl:mx-auto xl:mt-4 mt-4">
           {ifPlaying() === false && <p className="text-white text-center">Team <span className={`font-bold font-serif ${ifPlaying()===false ? "text-black":"text-yellow-300"}`}>" {userTeam} " </span> was defeated</p>}
           {currentBrackets.map((bracket, index) => {
             return (
