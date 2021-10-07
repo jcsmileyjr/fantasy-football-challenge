@@ -302,10 +302,10 @@ function App() {
     <div
       className={`App flex-col bg-fixed bg-center bg-contain bg-no-repeat xl:bg-repeat ${
         challengeStage === 0 ? "bg-football-pattern" : "bg-blue-900"
-      } ${challengeStage === 1 ? "bg-football-names" : "bg-blue-900"} ${challengeStage > 1 ? "h-full":"h-screen"}`}
+      } ${challengeStage === 1 ? "bg-football-names" : "bg-blue-900"} ${challengeStage > 1 || challengeStage==='lose' || challengeStage==='won' ? "h-full ":"h-screen"}`}
     >
       <div
-        className={` bg-opacity-90 h-screen ${
+        className={` bg-opacity-90 h-full ${
           challengeStage > 1
             ? ifPlaying() === false
               ? "bg-red-700"
